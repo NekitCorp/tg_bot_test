@@ -1,8 +1,13 @@
 const Telegraf = require("telegraf");
+const SocksAgent = require("socks5-https-client/lib/Agent");
+const socksAgent = new SocksAgent({
+    socksHost: process.env.SOCKS_HOST,
+    socksPort: process.env.SOCKS_PORT
+});
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
-
-console.log(process.env.BOT_TOKEN);
+const bot = new Telegraf(process.env.BOT_TOKEN, {
+    telegram: { agent: socksAgent }
+});
 
 bot.start(ctx => {
     console.log("started:", ctx.from.id);

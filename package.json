@@ -10,6 +10,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "socks5-https-client": "^1.2.1",
         "telegraf": "^3.34.1"
     }
 }
